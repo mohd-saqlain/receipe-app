@@ -11,20 +11,18 @@ const Details = () => {
     const nameRef = useRef();
     useGSAP(()=>{
       gsap.from(imageRef.current,{
-        y:500,
+        x:-700,
+        y:200,
         rotate:90,
         duration:1,
-        delay:.5,
-        opacity:0.1
+        opacity:0.1,
+        height:0
       })
-    },[selectedData?.strMealThumb])
-
-    useGSAP(()=>{
       gsap.from(nameRef.current,{
         opacity:0.1,
         duration:2,
       })
-    },[selectedData?.strMeal])
+    },[selectedData?.strMealThumb])
 
   return (
 

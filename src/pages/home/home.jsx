@@ -1,16 +1,9 @@
 import React,{useEffect} from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import { Menu,ChevronRight } from '@mui/icons-material';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -18,7 +11,6 @@ import Details from '../../components/recepie-detail/detail';
 import { useDispatch,useSelector } from 'react-redux';
 import Loader from '../../components/loader/loader';
 import { fetchRecepies } from '../../redux/slice/recepie';
-import { updateSelectedRecepie } from '../../redux/slice/selectedRecepie';
 import Sidebar from '../../components/sidebar/sidebar';
 import styles from './home.module.css'
 
@@ -97,7 +89,7 @@ const Home = () => {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,backgroundColor:'#F7F6F0' },
           }}
         >
-          <Sidebar/>
+          <Sidebar handleDrawerClose={handleDrawerClose}/>
         </Drawer>
         <Drawer
           variant="permanent"
@@ -107,7 +99,7 @@ const Home = () => {
           }}
           open
         >
-          <Sidebar/>
+          <Sidebar handleDrawerClose={handleDrawerClose}/>
         </Drawer>
       </Box>
       <Box
