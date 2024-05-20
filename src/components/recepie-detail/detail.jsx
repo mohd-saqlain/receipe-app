@@ -8,6 +8,7 @@ import styles from './detail.module.css'
 const Details = () => {
     const selectedData = useSelector(state=>state.selectedRecepie);
     const imageRef = useRef();
+    const nameRef = useRef();
     useGSAP(()=>{
       gsap.from(imageRef.current,{
         y:500,
@@ -18,10 +19,17 @@ const Details = () => {
       })
     },[selectedData?.strMealThumb])
 
+    useGSAP(()=>{
+      gsap.from(nameRef.current,{
+        opacity:0.1,
+        duration:2,
+      })
+    },[selectedData?.strMeal])
+
   return (
 
       <Box className={styles.main} >
-        <Typography variant='h4' sx={{color:'#6C737F'}}>{selectedData?.strMeal ? "Chef calls this " : "Please select recepie to show details" }<span style={{color:'#111927'}}>{selectedData?.strMeal || ""}</span></Typography>
+        <Typography variant='h4' sx={{color:'#6C737F'}}>{selectedData?.strMeal ? "Chef calls this " : "Please select recepie to show details" }<span ref={nameRef} style={{color:'#111927'}}>{selectedData?.strMeal || ""}</span></Typography>
         <Box className={styles.imageContainer}>
         <Paper ref={imageRef} elevation={4} component='img' className={styles.image} src={selectedData?.strMealThumb} />
         </Box>
